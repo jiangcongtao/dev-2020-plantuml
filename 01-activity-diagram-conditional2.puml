@@ -1,0 +1,24 @@
+@startuml
+
+title Conditional - Activity Diagram 
+
+(*) --> "Initialization"
+
+if "Some Test" then
+  -->[true] "Some Activity"
+  --> "Another activity"
+  -right-> (*)
+else
+  ->[false] "processing depends on conditions"
+  
+  if "Another Test" then
+    -->[true] "Another activity2"
+    --> "Another activity1"
+  else
+    -->[false] "Another something else"
+  endif 
+  
+  -->[Ending process] (*)
+endif
+
+@enduml
