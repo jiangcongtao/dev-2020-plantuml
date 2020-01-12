@@ -9,15 +9,16 @@ if "Some Test" then
   --> "Another activity"
   -right-> (*)
 else
-  ->[false] "processing depends on conditions"
-  
-  if "Another Test" then
-    -->[true] "Another activity2"
-    --> "Another activity1"
-  else
-    -->[false] "Another something else"
-  endif 
-  
+    partition internal #LightSkyBlue {
+      ->[false] "processing depends on conditions"
+      
+      if "Another Test" then
+        -->[true] "Another activity2"
+        --> "Another activity1"
+      else
+        -->[false] "Another something else"
+      endif 
+  }
   -->[Ending process] (*)
 endif
 
