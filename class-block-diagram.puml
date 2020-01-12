@@ -1,0 +1,79 @@
+@startuml
+' reference: https://plantuml.com/zh/deployment-diagram
+' https://plantuml-documentation.readthedocs.io/en/latest/formatting/all-skin-params.html
+' https://plantuml.com/zh/class-diagram
+' use skinparam to change font and color
+skinparam backgroundColor #EEEBDC
+skinparam handwritten true
+'skinparam monochrome true
+skinparam shadowing false
+'skinparam monochrome reverse
+skinparam defaultFontSize 12
+skinparam classFontName Helvetica
+
+skinparam rectangle {
+	BorderColor DodgerBlue
+	BackgroundColor DodgerBlue
+	FontName Impact
+	FontSize 24
+	FontColor white
+}
+
+skinparam class {
+    ArrowColor black
+    ArrowThickness 2
+}
+
+skinparam classArrowThickness 3
+
+'skinparam titleBorderRoundCorner 15
+'skinparam titleBorderThickness 2
+'skinparam titleBorderColor red
+'skinparam titleBackgroundColor Aqua-CadetBlue
+skinparam titleFontSize 28
+
+title  ROOM MODELING
+
+allowmixing
+
+
+' enities
+rectangle home
+rectangle fourniture
+rectangle table
+rectangle chair
+rectangle light
+rectangle TV
+rectangle desk
+
+' relationship
+home *--fourniture: has
+note left of home: home is usually located\n in Shanghai city
+
+fourniture <|-- table : is
+fourniture <|-- chair : is
+fourniture <|-- light: is
+fourniture <|-- TV: is
+fourniture <|-- desk: is
+
+table .. chair : must be pair
+desk .. table : peer
+chair .. desk : in same room
+
+light .. table : used with
+TV .. chair: used with
+
+'skinparam monochrome true
+!include <cloudinsight/tomcat>
+!include <cloudinsight/kafka>
+!include <cloudinsight/java>
+!include <cloudinsight/cassandra>
+rectangle "<$tomcat>\nwebapp" as webapp
+queue "<$kafka>" as kafka
+rectangle "<$java>\ndaemon" as daemon
+database "<$cassandra>" as cassandra
+
+webapp -> kafka
+kafka -> daemon
+daemon --> cassandra 
+@enduml

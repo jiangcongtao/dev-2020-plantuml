@@ -1,0 +1,102 @@
+@startuml
+
+' use skinparam to change font and color
+skinparam backgroundColor #EEEBDC
+'skinparam handwritten true
+'skinparam monochrome true
+skinparam shadowing false
+'skinparam monochrome reverse
+skinparam defaultFontSize 14
+skinparam classFontName Helvetica
+skinparam sequenceMessageAlign center
+
+skinparam sequence {
+	ArrowColor DeepSkyBlue
+	ActorBorderColor DeepSkyBlue
+	LifeLineBorderColor blue
+	LifeLineBackgroundColor #A9DCDF
+	
+	ParticipantBorderColor DeepSkyBlue
+	ParticipantBackgroundColor DodgerBlue
+	ParticipantFontName Impact
+	ParticipantFontSize 24
+	ParticipantFontColor #A9DCDF
+	
+	ActorBackgroundColor aqua
+	ActorFontColor DeepSkyBlue
+	ActorFontSize 14
+	ActorFontName Courier
+}
+
+
+header Page Header
+footer Page %page% of %lastpage%
+
+title Greeting Interaction
+
+
+autonumber
+
+Actor Nick
+
+
+box "Internal Service" #LightBlue
+	participant Bob
+	participant Alice
+end box
+
+== Initialization ==
+
+Nick -> Alice: 0. Good Morning!
+' start life swimlane
+activate Alice #FFBBBB
+
+note left: this is a first note
+
+Bob -> Alice: Hello!
+Alice --> Bob: Hi!
+
+' Comment line starts with single quote
+' newpage 
+
+Alice -> Alice: <<Thinking for a while...>>
+activate Alice  #DarkSalmon
+deactivate Alice
+
+Alice --> Nick: 0. Morning, thanks
+
+' end the life lane
+deactivate Alice
+
+Bob <-[#red]> Alice: evt:shaking hands
+Bob <-[#0000FF]-> Alice: greeting
+
+
+
+
+== Alternative Transactions ==
+
+autonumber 1
+alt successful case
+
+	Bob -> Alice: Authentication Accepted
+	note right #aqua: this is a second note 
+	
+else some kind of failure
+
+	Bob -> Alice: Authentication Failure
+	group My own label
+	    create Log
+		Alice -> Log : new, Log attack start
+	    loop 1000 times
+	        Alice -> Bob: DNS Attack
+	    end
+		Alice -> Log : Log attack end
+	end
+	
+else Another type of failure
+
+   Bob -> Alice: Please repeat
+   
+end
+@enduml
