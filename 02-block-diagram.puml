@@ -1,0 +1,28 @@
+@startuml
+
+title Git Workflow
+
+Rectangle "Client Side Hook" as csh {
+    (initiated commit) as icommit
+    Rectangle "pre-commit" as precommit
+    (commit)
+    Rectangle "post-commit" as postcommit
+}
+
+ 
+Rectangle "Server Side Hook" as ssh {
+    Rectangle "pre-receive" as prereceive
+    
+    Rectangle "update" as update
+} 
+
+icommit -> precommit
+precommit -> commit
+
+commit -> postcommit
+postcommit -left-> prereceive
+prereceive -> update
+
+'csh .right. ssh
+
+@enduml
