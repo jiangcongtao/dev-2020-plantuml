@@ -1,28 +1,38 @@
 @startuml
 
-title Git Workflow
+'skinparam handwritten true
+skinparam shadowing false
+
+title Git Hook Process
 
 Rectangle "Client Side Hook" as csh {
-    (initiated commit) as icommit
+    (Commit Intiated) as icommit
     Rectangle "pre-commit" as precommit
+    Rectangle "prepare-commit-msg" as preparemsg
     (commit)
+    note left of commit: commit-msg
     Rectangle "post-commit" as postcommit
 }
 
  
 Rectangle "Server Side Hook" as ssh {
-    Rectangle "pre-receive" as prereceive
-    
+    Rectangle "pre-receive" as prereceive    
     Rectangle "update" as update
+
+    (Repository Updated) as repoupdate
+    Rectangle "post-receive" as postreceive
 } 
 
-icommit -> precommit
-precommit -> commit
+icommit -down-> precommit
+precommit -down-> preparemsg
+preparemsg -down-> commit
+commit -down-> postcommit
 
-commit -> postcommit
-postcommit -left-> prereceive
-prereceive -> update
+postcommit -left-> prereceive : push
 
+prereceive -up-> update
+update -up-> repoupdate
+repoupdate -up-> postreceive
 'csh .right. ssh
 
 @enduml
