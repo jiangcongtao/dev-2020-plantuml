@@ -3,3 +3,5 @@
 - [Real World PlantUML](http://real-world-plantuml.com/)
 - [Diagram in Python Code - AWS, Azure, GCP, Kubernetes, Alibaba Cloud and Oracle Cloud](https://diagrams.mingrammer.com/)
 - [Text-based UML Tools Complete List](https://modeling-languages.com/text-uml-tools-complete-list/)
+- https://dotuml.com/index.html
+- http://liveuml.com/
