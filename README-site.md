@@ -1,1 +1,4 @@
-https://www.planttext.com/
+- [Online Sample and Editor](https://www.planttext.com/)
+- [PlantUML reference](https://plantuml.com/zh/)
+- [Real World PlantUML](http://real-world-plantuml.com/)
+- [Diagram in Python Code - AWS, Azure, GCP, Kubernetes, Alibaba Cloud and Oracle Cloud](https://diagrams.mingrammer.com/)
