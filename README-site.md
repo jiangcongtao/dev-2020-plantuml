@@ -8,3 +8,7 @@
 - https://graphviz.readthedocs.io/en/stable/index.html
 - https://www.graphviz.org/
 - [Graphviz Pocket Reference](http://graphs.grevian.org/)
+- https://github.com/caseywatts/graphviz-tutorial
+- https://sketchviz.com/flowcharts-in-graphviz
+- https://sketchviz.com/graphviz-examples
+- [Graphviz Oneline Editor](https://edotor.net/)
