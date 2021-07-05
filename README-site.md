@@ -7,3 +7,4 @@
 - https://liveuml.com/
 - https://graphviz.readthedocs.io/en/stable/index.html
 - https://www.graphviz.org/
+- [Graphviz Pocket Reference](http://graphs.grevian.org/)
